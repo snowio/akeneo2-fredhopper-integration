@@ -39,7 +39,7 @@ class ProductToVariantMapperTest extends TestCase
     public function testMapVariantWithCustomMappers()
     {
         $mapper = ProductToVariantMapper::create()
-            ->withVariantGroupCodeToProductIdMapper(function (string $vgCode, string $channel) {
+            ->withParentCodeToProductIdMapper(function (string $vgCode, string $channel) {
                 return "{$channel}_{$vgCode}";
             });
         $actual = $mapper(AkeneoProductData::fromJson([

@@ -37,7 +37,7 @@ class ProductToVariantMapper
         return $result;
     }
 
-    public function withVariantGroupCodeToProductIdMapper(callable $fn): self
+    public function withParentCodeToProductIdMapper(callable $fn): self
     {
         $result = clone $this;
         $result->variantGroupCodeToProductIdMapper = $fn;
