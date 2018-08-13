@@ -13,10 +13,10 @@ class ProductModelToProductMapper
         return new self;
     }
 
-    public function __invoke(ProductModelData $variantGroup): ProductDataSet
+    public function __invoke(ProductModelData $productModelData): ProductDataSet
     {
-        $productId = ($this->productIdMapper)($variantGroup->getCode(), $variantGroup->getChannel());
-        $akeneoAttributeValues = $variantGroup->getAttributeValues();
+        $productId = ($this->productIdMapper)($productModelData->getCode(), $productModelData->getChannel());
+        $akeneoAttributeValues = $productModelData->getAttributeValues();
         $fredhopperAttributeValues = ($this->attributeValueMapper)($akeneoAttributeValues);
         return ProductDataSet::of([FredhopperProductData::of($productId)->withAttributeValues($fredhopperAttributeValues)]);
     }

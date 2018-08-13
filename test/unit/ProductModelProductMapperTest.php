@@ -11,7 +11,7 @@ use SnowIO\FredhopperDataModel\AttributeValueSet as FredhopperAttributeValueSet;
 use SnowIO\FredhopperDataModel\ProductData as FredhopperProductData;
 use SnowIO\FredhopperDataModel\ProductDataSet;
 
-class VariantGroupProductMapperTest extends TestCase
+class ProductModelProductMapperTest extends TestCase
 {
     public function testMappers()
     {
