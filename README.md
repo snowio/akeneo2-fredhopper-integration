@@ -14,16 +14,15 @@ Akeneo 2, Fredhopper integration package.
 
 Run the following command to install the package
 ```
-composer install
+$ composer install
 ```
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
+Run the following command after installing the package to run the tests
 
 ```
-vendor/bin/phpunit
+$ vendor/bin/phpunit
 ```
 
 ## Versioning
