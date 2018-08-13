@@ -3,8 +3,7 @@
 [![Build Status](https://travis-ci.com/snowio/akeneo2-fredhopper-integration.svg?branch=master)](https://travis-ci.com/snowio/akeneo2-fredhopper-integration)
 [![codecov](https://codecov.io/gh/snowio/akeneo2-fredhopper-integration/branch/master/graph/badge.svg)](https://codecov.io/gh/snowio/akeneo2-fredhopper-integration)
 
-Package Used to integration Akeneo 2 With Fredhopper.
-
+Akeneo 2, Fredhopper intergration package.
 
 ### Prerequisites
 
