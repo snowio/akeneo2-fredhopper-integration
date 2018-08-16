@@ -3,6 +3,7 @@ declare(strict_types=1);
 namespace SnowIO\Akeneo2Fredhopper;
 
 use SnowIO\Akeneo2DataModel\ProductData as AkeneoProductData;
+use SnowIO\Akeneo2DataModel\ProductModelData;
 use SnowIO\FredhopperDataModel\ProductData;
 use SnowIO\FredhopperDataModel\VariantData as FredhopperVariantData;
 use SnowIO\FredhopperDataModel\VariantDataSet;
@@ -14,12 +15,12 @@ class ProductToVariantMapper
         return new self;
     }
 
-    public function __invoke(AkeneoProductData $akeneoProductData): ?VariantDataSet
+    public function __invoke(AkeneoProductData $akeneoProductData, ?ProductModelData $productModel = null): ?VariantDataSet
     {
         $channel = $akeneoProductData->getChannel();
         $sku = $akeneoProductData->getSku();
         $variantId = ($this->variantIdMapper)($sku, $channel);
-        $variantGroupCode = $akeneoProductData->getProperties()->getParent();
+        $variantGroupCode = $productModel !== null ? $productModel->getCode() : $akeneoProductData->getProperties()->getParent();
         if ($variantGroupCode === null) {
             $productId = ($this->skuToProductIdMapper)($sku, $channel);
         } else {
