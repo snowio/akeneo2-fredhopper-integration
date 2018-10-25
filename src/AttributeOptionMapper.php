@@ -45,6 +45,15 @@ class AttributeOptionMapper
         return $result;
     }
 
+    private static function getDefaultValueIdMapper(): callable
+    {
+        return function (string $value) {
+            $values = explode('-', $value);
+            $value = count($values) >= 2 ? implode('-', array_slice($values, 1)) : $value;
+            return FredhopperAttributeOption::sanitizeValueId($value);
+        };
+    }
+
     private $attributeIdMapper;
     private $valueIdMapper;
     private $displayValueMapper;
@@ -52,7 +61,7 @@ class AttributeOptionMapper
     private function __construct()
     {
         $this->attributeIdMapper = [AttributeData::class, 'sanitizeId'];
-        $this->valueIdMapper = [FredhopperAttributeOption::class, 'sanitizeValueId'];
+        $this->valueIdMapper = self::getDefaultValueIdMapper();
         $this->displayValueMapper = InternationalizedStringMapper::create();
     }
 }

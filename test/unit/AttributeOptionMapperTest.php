@@ -36,6 +36,15 @@ class AttributeOptionMapperTest extends TestCase
         self::assertTrue($expected->equals($actual));
     }
 
+    public function testMapWithNoLabelsAndSuffixedAttributeCode()
+    {
+        $mapper = AttributeOptionMapper::create();
+        $attributeOption = AkeneoAttributeOption::of(AttributeOptionIdentifier::of('size', 'size-large'));
+        $expected = AttributeOptionSet::of([FredhopperAttributeOption::of('size', 'large')]);
+        $actual = $mapper($attributeOption);
+        self::assertTrue($expected->equals($actual));
+    }
+
     public function testMapWithLabels()
     {
 
